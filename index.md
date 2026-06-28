@@ -59,7 +59,7 @@ RepL is developed along three main directions:
 
 ---
 <h2>RepL Trajectory</h2>
-<img src="assets/Repl_diagram0.png" style="width:100%; max-width:1000px;">
+<img src="assets/RepL_diagram0.png" style="width:100%; max-width:1000px;">
 
 <h3>Explore:</h3>
 <ul>
