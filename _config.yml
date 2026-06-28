@@ -7,5 +7,7 @@ markdown: kramdown
 header_pages:
   - research.md
   - publications.md
+  - experience.md
+  - talks.md
 
 author: Keren Li
