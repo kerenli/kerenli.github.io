@@ -1,4 +1,7 @@
-# Publications
+---
+layout: page
+title: Publications
+---
 
 ## Selected Work
 
