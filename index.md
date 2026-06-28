@@ -1,9 +1,7 @@
 ---
 layout: page
-title: Home
+title: Representative Learning Lab
 ---
-
-# Representative Learning Lab (RLab)
 
 ## Research Interests
 
