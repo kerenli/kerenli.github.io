@@ -83,4 +83,10 @@ See [Publications](publications.md) for a complete list. Recent work includes:
 
 - *Representative Learning for Distributed Learning with Heterogeneity and Asynchrony* (JCGS)
 
+## Professional Experience
+See [Experience & Education](experience) for details.
+
+## Talks
+See [Talks](talks) for selected invited and conference talks.
+
 ---
