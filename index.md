@@ -58,6 +58,16 @@ RepL is developed along three main directions:
 - Collaborative learning frameworks  
 
 ---
+<h2>RepL Trajectory</h2>
+<img src="assets/Repl_diagram0.png" style="width:100%; max-width:1000px;">
+
+<h3>Explore:</h3>
+<ul>
+  <li><a href="point.html">Point Representatives (MR, SMR)</a></li>
+  <li><a href="stabilized.html">Stabilized (TMR, Anchored-SMR)</a></li>
+  <li><a href="distributional.html">Distributional (MMR, Clouded-SMR)</a></li>
+</ul>
+---
 
 ## Visual Overview
 
