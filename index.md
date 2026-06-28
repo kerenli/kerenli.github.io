@@ -66,8 +66,8 @@ RepL is developed along three main directions:
 <h3>Explore:</h3>
 <ul>
   <li><a href="assets/RepL_diagram2.png"">Point Representatives (MR, SMR)</a></li>
-  <li><a href="stabilized.html">Stabilized (TMR, Anchored-SMR)</a></li>
-  <li><a href="distributional.html">Distributional (MMR, Clouded-SMR)</a></li>
+  <li><a href="assets/RepL_diagram3.png">Stabilized (TMR, Anchored-SMR)</a></li>
+  <li><a href="assets/RepL_diagram4.png">Distributional (MMR, Clouded-SMR)</a></li>
 </ul>
 ---
 
