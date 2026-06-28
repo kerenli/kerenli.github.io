@@ -3,7 +3,7 @@ layout: page
 title: Representative Learning Lab
 ---
   
-## Distributed AI via Representative Learning (RepL)
+## Distributed AI via Representative Learning
 
 Modern AI is increasingly **distributed**: data reside across devices, institutions, and regions.  
 This creates fundamental challenges in:
