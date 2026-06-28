@@ -1,9 +1,10 @@
----
-layout: page
-title: Publications
----
-
 # Publications
+
+## Selected Work
+
+- Representative Learning (RepL), JCGS 2026
+- Score-Matching Representative (SMR), EJS 2022  
+
 
 ## 2026
 
