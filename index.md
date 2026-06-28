@@ -65,7 +65,7 @@ RepL is developed along three main directions:
   <img src="assets/representative_arch.png" width="600">
 </p>
 
-<p align="center"><em>Representative Learning (RepL) framework</em></p>
+<p align="center"><em>Representative Learning (RepL) framework for centralized build </em></p>
 
 ---
 
