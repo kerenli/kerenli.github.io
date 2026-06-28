@@ -2,14 +2,6 @@
 layout: page
 title: Representative Learning Lab
 ---
-
-## Research Interests
-
-- Distributed machine learning  
-- Federated learning  
-- Deep learning  
-- Bioinformatics  
-- Financial mathematics
   
 ## Towards Distributed AI via Representative Learning (RepL)
 
