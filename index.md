@@ -70,11 +70,7 @@ RepL is developed along three main directions:
   <li><a href="assets/RepL_diagram4.png">Distributional (MMR, Clouded-SMR)</a></li>
 </ul>
 
-<p>
-  <a href="#" onclick="openModal('assets/RepL_diagram2.png'); return false;">
-    Distributional (MMR, Clouded-SMR)
-  </a>
-</p>
+<a href="assets/RepL_diagram2.png" target="_blank">Distributional (MMR, Clouded-SMR)</a>
 
 ---
 
