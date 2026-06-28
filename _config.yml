@@ -1,0 +1,12 @@
+title: Representative Learning Lab (RLab)
+description: Distributed AI via Representative Learning (RepL)
+theme: minima
+
+markdown: kramdown
+
+header_pages:
+  - research.md
+  - publications.md
+
+author:
+  name: Keren Li
