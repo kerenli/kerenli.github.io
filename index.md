@@ -1,3 +1,8 @@
+---
+layout: page
+title: Home
+---
+
 # Representative Learning Lab (RLab)
 
 ## Towards Distributed AI via Representative Learning (RepL)
