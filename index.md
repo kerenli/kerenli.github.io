@@ -5,6 +5,14 @@ title: Home
 
 # Representative Learning Lab (RLab)
 
+## Research Interests
+
+- Distributed machine learning  
+- Federated learning  
+- Deep learning  
+- Bioinformatics  
+- Financial mathematics
+  
 ## Towards Distributed AI via Representative Learning (RepL)
 
 Modern AI is increasingly **distributed**: data reside across devices, institutions, and regions.  
