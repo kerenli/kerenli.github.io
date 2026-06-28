@@ -65,65 +65,10 @@ RepL is developed along three main directions:
 
 <h3>Explore:</h3>
 <ul>
-  <li><a href="assets/RepL_diagram2.png">Point Representatives (MR, SMR)</a></li>
-  <li><a href="assets/RepL_diagram3.png">Stabilized (TMR, Anchored-SMR)</a></li>
+  <li><a href="assets/RepL_diagram2.png"  target="_blank">Point Representatives (MR, SMR)</a></li>
+  <li><a href="assets/RepL_diagram3.png"  target="_blank">Stabilized (TMR, Anchored-SMR)</a></li>
   <li><a href="assets/RepL_diagram4.png"  target="_blank">Distributional (MMR, Clouded-SMR)</a></li>
 </ul>
-
-<p>
-<a href="#" onclick="openModal('assets/RepL_diagram1.png'); return false;">Point Representatives</a>
-<a href="#" onclick="openModal('assets/RepL_diagram2.png'); return false;">Distributional (MMR, Clouded-SMR)</a>
-<a href="#" onclick="openModal('assets/RepL_diagram3.png'); return false;">Deep Representative</a>
-</p>
-
-<!-- Modal -->
-<div id="imgModal" class="modal" onclick="closeModal()">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modalImg" alt="RepL diagram detail">
-</div>
-
-<style>
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
-}
-
-.modal-content {
-  display: block;
-  margin: 5% auto;
-  max-width: 90%;
-  max-height: 85%;
-  border: 4px solid white;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}
-</style>
-
-<script>
-function openModal(src) {
-  document.getElementById('imgModal').style.display = 'block';
-  document.getElementById('modalImg').src = src;
-}
-
-function closeModal() {
-  document.getElementById('imgModal').style.display = 'none';
-}
-</script>
 
 
 ---
