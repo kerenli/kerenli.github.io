@@ -11,6 +11,22 @@ title: Publications
 
 ## 2026
 
+- Wang, B., **Li, K.†**  
+  *Lifted Empirical Risk for Quantile Regression: Clouded Representatives and Score Matching*  
+  under preparation
+
+- Casey, J., Wang, B., **Li, K.†**  
+  *Representative Learning for Distributed Support Vector Machines*  
+  under preparation
+
+- Chen, Q., Han, K., **Li, K.†**  
+  *Representative Learning for Distributed Functional Data Analysis*  
+  under preparation
+
+- Wang, J., Tang, Y.,  **Li, K.†**  
+  *Representation-Induced Representative Learning for Image Classification*  
+  under preparation
+  
 - **Li, K.**  
   *Representative Learning for Distributed Learning with Heterogeneity and Asynchrony*  
   *Journal of Computational and Graphical Statistics*, 2026  
@@ -27,7 +43,7 @@ title: Publications
 
 - Fan, M., Shterenberg, R. G., **Li, K.†**  
   *A Statistical Framework for Measuring Data Heterogeneity in Distributed Learning*  
-  Submitted, Annals of Applied Statistics  
+  under review, Annals of Applied Statistics  
 
 - Fan, M., **Li, K.**, Zhang, T., et al.  
   *PFedDST: Personalized Federated Learning with Decentralized Selection Training*  
@@ -74,7 +90,11 @@ title: Publications
 - Zhou, S., Jiang, L., **Li, K.**, et al.  
   *Natural Cubic Spline Approximation of Risk-Neutral Density*  
   *International Journal of Financial Studies*, 2024  
-  https://doi.org/10.3390/ijfs12040127  
+  https://doi.org/10.3390/ijfs12040127
+
+- Shrestha, R. R., Wang, L., Zhou, Z.,  **Li, K.**, et al. 
+  *Real-world Data-Driven Upgrade Cost Prediction for Distribution Grids with Smart EV Charging*
+  Proceedings of the 2026 IEEE/PES Transmission and Distribution Conference and Exposition (T&D), 2026, pp. 1–5
 
 ---
 
