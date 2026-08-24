@@ -35,8 +35,12 @@ title: Publications
 - **Li, K.**, Unlu, I., Tu, Y., Voong, L. N., et al.  
   *Differential Nucleosome Organization in Human Interphase and Metaphase Chromosomes*  
   *Molecular Systems Biology*, 2026  
-  https://doi.org/10.1038/s44320-026-00192-y  
-
+  https://doi.org/10.1038/s44320-026-00192-y
+  
+- Shrestha, R. R., Wang, L., Zhou, Z.,  **Li, K.**, et al. 
+  *Real-world Data-Driven Upgrade Cost Prediction for Distribution Grids with Smart EV Charging*
+  Proceedings of the 2026 IEEE/PES Transmission and Distribution Conference and Exposition (T&D), 2026, pp. 1–5
+  
 ---
 
 ## 2025
@@ -91,10 +95,6 @@ title: Publications
   *Natural Cubic Spline Approximation of Risk-Neutral Density*  
   *International Journal of Financial Studies*, 2024  
   https://doi.org/10.3390/ijfs12040127
-
-- Shrestha, R. R., Wang, L., Zhou, Z.,  **Li, K.**, et al. 
-  *Real-world Data-Driven Upgrade Cost Prediction for Distribution Grids with Smart EV Charging*
-  Proceedings of the 2026 IEEE/PES Transmission and Distribution Conference and Exposition (T&D), 2026, pp. 1–5
 
 ---
 
