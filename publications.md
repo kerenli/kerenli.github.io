@@ -39,7 +39,7 @@ title: Publications
   
 - Shrestha, R. R., Wang, L., Zhou, Z.,  **Li, K.**, et al. 
   *Real-world Data-Driven Upgrade Cost Prediction for Distribution Grids with Smart EV Charging*
-  Proceedings of the 2026 IEEE/PES Transmission and Distribution Conference and Exposition (T&D), 2026, pp. 1–5
+  *Proceedings of the 2026 IEEE/PES Transmission and Distribution Conference and Exposition (T&D)*, 2026, pp. 1–5
   
 ---
 
