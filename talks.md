@@ -6,6 +6,8 @@ title: Talks
 # Selected Talks
 
 ## 2026
+- Representative Learning: From Point Representatives to Distributed AI, University of Alabama
+- Lifted Empirical Risk and Clouded Representatives for Non-smooth Loss Functions, 11th Annual Meeting of the SIAM Central States Section 2026
 - Non-smooth Optimization in Distributed Learning Environments, ICSA China Conference  
 - From Data to Communication: Representative Learning in Distributed Systems, IMSI  
 - Distributed Learning with Heterogeneity and Asynchrony: Representative Learning  
