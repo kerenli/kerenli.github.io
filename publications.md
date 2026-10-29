@@ -5,26 +5,29 @@ title: Publications
 
 ## Selected Work
 
+- Lifted Empirical Risk for Quantile Regression: Clouded Representatives and Score Matching, arXiv 2026
 - Representative Learning (RepL), JCGS 2026
 - Score-Matching Representative (SMR), EJS 2022  
 
 
 ## 2026
 
-- Wang, B., **Li, K.†**  
+- **Li, K.**,  Wang, B.  
   *Lifted Empirical Risk for Quantile Regression: Clouded Representatives and Score Matching*  
-  under preparation
+  arXiv  
+  https://arxiv.org/abs/
 
 - Casey, J., Wang, B., **Li, K.†**  
   *Representative Learning for Distributed Support Vector Machines*  
-  under preparation
+  arXiv  
+  https://arxiv.org/abs/
 
 - Chen, Q., Han, K., **Li, K.†**  
   *Representative Learning for Distributed Functional Data Analysis*  
   under preparation
 
 - Wang, J., Tang, Y.,  **Li, K.†**  
-  *Representation-Induced Representative Learning for Image Classification*  
+  *Projection-Based Representative Learning for Image Classification in Heterogeneous Distributed Systems*  
   under preparation
   
 - **Li, K.**  
@@ -47,7 +50,7 @@ title: Publications
 
 - Fan, M., Shterenberg, R. G., **Li, K.†**  
   *A Statistical Framework for Measuring Data Heterogeneity in Distributed Learning*  
-  under review, Annals of Applied Statistics  
+  resubmit and under review, Annals of Applied Statistics  
 
 - Fan, M., **Li, K.**, Zhang, T., et al.  
   *PFedDST: Personalized Federated Learning with Decentralized Selection Training*  
