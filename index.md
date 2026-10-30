@@ -15,6 +15,7 @@ The central question is simple:
 > **If data cannot be shared, what information should we communicate?**
 
 Given a local dataset
+
 $$
 \mathcal{D}_k=\{(x_i,y_i):i\in I_k\},
 $$
@@ -23,6 +24,16 @@ we construct a compact pseudo-dataset
 
 $$
 \widetilde{\mathcal{D}}_k=\mathcal{R}_k(\mathcal{D}_k),
+$$
+
+called a **representative**.
+
+The representative operator $\mathcal{R}_k$ is designed to preserve selected information from the local data. The resulting representative can then be communicated and used for downstream learning.
+
+In short,
+
+$$
+\boxed{\text{local data}} \quad\longrightarrow\quad \boxed{\text{representative}} \quad\longrightarrow\quad \boxed{\text{communication and learning}}.
 $$
 
 - Data heterogeneity (non-IID distributions)
