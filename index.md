@@ -1,12 +1,29 @@
+
+
 ---
-layout: page
-title: Representative Learning Lab
+layout: page title: Representative Learning
 ---
   
-## Distributed AI via Representative Learning
+# Keren Li
 
-Modern AI is increasingly **distributed**: data reside across devices, institutions, and regions.  
-This creates fundamental challenges in:
+## Representative Learning
+
+I develop **Representative Learning (RepL)**, a data-centric framework for distributed learning.
+
+The central question is simple:
+
+> **If data cannot be shared, what information should we communicate?**
+
+Given a local dataset
+$$
+\mathcal{D}_k=\{(x_i,y_i):i\in I_k\},
+$$
+
+we construct a compact pseudo-dataset
+
+$$
+\widetilde{\mathcal{D}}_k=\mathcal{R}_k(\mathcal{D}_k),
+$$
 
 - Data heterogeneity (non-IID distributions)
 - Communication constraints
