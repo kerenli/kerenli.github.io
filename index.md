@@ -1,7 +1,8 @@
 
 
 ---
-layout: page title: Representative Learning
+layout: page 
+title: Representative Learning
 ---
   
 # Keren Li
