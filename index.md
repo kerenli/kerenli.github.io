@@ -235,7 +235,7 @@ which we call a **clouded representative**.
 <p align="center">
   <img src="assets/point_clouded_rep.png"
        alt="Point and clouded representatives"
-       width="450">
+       width="600">
 </p>
 
 ---
@@ -328,121 +328,227 @@ The Gaussian lifting produces a smooth convex objective for nondegenerate clouds
 
 ---
 
-# Beyond Vector-Valued Data
+# Beyond Tabular Data
 
-The idea of a representative is not restricted to a vector-valued pseudo-data point.
+Point and clouded representatives extend what information can be retained from a local dataset. A second direction is to extend **what form a representative can take**.
 
-The same question can be asked for more complex data:
+The representative principle is not restricted to finite-dimensional tabular observations. For more complex data, the communicated object should retain the structure of the original data while preserving selected information needed for downstream learning.
 
-> **What compact object preserves the information needed from a local dataset while remaining useful to another learner?**
-
-This leads to extensions of Representative Learning to structured objects.
-
-### Functional Representatives
-
-For functional data, the representative itself can retain functional structure rather than reducing the local information to a finite-dimensional model update.
-
-### Image Representatives
-
-For image classification, an image-format representative can preserve local image structure while remaining in the original image domain.
-
-### Other Structured Representatives
-
-More generally, representatives may take point, distributional, functional, image, or other structured forms depending on the information that needs to be preserved.
-
-This changes the question from
-
-> *What is the best pseudo-point?*
-
-to the broader question
+This leads to a broader question:
 
 > **What should a representative preserve, and what form should it take?**
 
+### Functional Representatives
+
+For functional data, the representative itself can be a function or a collection of functional summaries. The goal is to preserve information from locally observed curves without reducing communication to model parameters.
+
+This extends the representative principle from finite-dimensional observations to infinite-dimensional data objects.
+
+### Image Representatives
+
+For image classification, direct pixel averaging can destroy important image structure, while communicating latent features makes the shared information dependent on a particular representation model.
+
+We therefore construct representatives that remain in the **image domain** while preserving selected structural and predictive information from local images.
+
+This allows nodes with different models or internal representations to communicate through a common data-format object.
+
+### Toward General Structured Representatives
+
+The same principle suggests representatives for other structured data: a representative should retain a data-compatible form while preserving statistical, geometric, predictive, or decision-relevant information required for its downstream use.
+
+The development of Representative Learning therefore shifts from
+
+> **How should we construct the best pseudo-point?**
+
+to
+
+> **What information should a representative preserve, and what mathematical object should carry that information?**
+
 ---
 
-# Current Research
+# Current Research Directions
 
-Our current work develops Representative Learning along several connected directions.
+Our current research focuses less on adding individual representative constructions and more on establishing general principles for **what representatives preserve, how they should adapt to learning tasks, and how they can support collaboration among heterogeneous learning systems.**
 
 ### Foundations of Representative Learning
 
-Characterize what information a representative can preserve, what information should be preserved for a particular learning task, and how representative operators can be constructed systematically.
+Existing representative constructions preserve different types of information: means and moments, score functions, local geometry, distributional variability, or predictive behavior.
 
-### Functional Representative Learning
+A fundamental question is whether these constructions can be understood through a common theory.
 
-Develop representative constructions for distributed functional data analysis.
+We are developing a mathematical framework for **representative operators**
 
-### Representative Learning for Images
+$$
+\mathcal{R}:\mathcal{D}\longrightarrow\widetilde{\mathcal{D}},
+$$
 
-Construct representatives that remain in the image domain while preserving information useful for learning under data and model heterogeneity.
+with three central questions:
 
-### Heterogeneity and Collaboration
+> **What can a representative preserve?**
 
-Use representatives not only for distributed optimization, but also for measuring differences between local information and determining when collaboration across nodes is useful.
+> **What should it preserve for a given downstream task?**
+
+> **How complex must a representative be to preserve that information?**
+
+The goal is to move Representative Learning from a collection of model-specific constructions toward a general theory of information preservation through representative objects.
+
+### Task-Adaptive Representative Learning
+
+Different learning problems do not require the same information from the data.
+
+A mean may be sufficient for one objective, while another task may require gradient, distributional, geometric, or predictive information.
+
+We therefore study how the representative operator $\mathcal{R}$ should adapt to the downstream objective rather than asking for one universally optimal representative.
+
+The central question becomes
+
+> **Given a class of downstream learning tasks, what information should the representative preserve?**
+
+### Heterogeneity and Adaptive Collaboration
+
+Representatives can also be used to compare information across nodes.
+
+We study heterogeneity in feature distributions, label distributions, conditional models, and representations, and use representative-based summaries to quantify these differences without requiring raw data pooling.
+
+The objective is not only to measure heterogeneity, but to use it to determine **whether, with whom, and how strongly a node should collaborate**.
+
+This connects representative construction to adaptive knowledge sharing: collaboration should depend on the compatibility of the information represented at different nodes.
+
+### Representative Composition
+
+When several representatives are received from different sources, another question appears:
+
+> **How should representative information be combined?**
+
+Rather than immediately pooling all communicated information, we are interested in how representative objects can be compared, validated, composed, retained, or rejected by heterogeneous learning systems.
+
+This moves Representative Learning from data reduction toward a more general architecture for distributed knowledge exchange.
 
 ---
 
-# From Distributed Learning to Distributed AI
+# From Representative Learning to Distributed AI
 
 Representative Learning began with a statistical question:
 
 > **How can one pseudo-data point represent a block of observations?**
 
-In distributed learning, this became a communication question:
+The first developments addressed this question through point representatives that preserve means, transformations, or score information.
+
+Clouded representatives broadened the question:
+
+> **How can a representative preserve not only location, but also local variation and geometry?**
+
+Structured representatives broaden it again:
+
+> **How can representative information be carried when the original data are functions, images, or other structured objects?**
+
+In distributed learning, these questions become a communication problem:
 
 > **What information should one node communicate to another?**
 
-For distributed AI, the question becomes broader:
+Distributed AI introduces one further step:
 
 > **How should autonomous learning agents communicate, evaluate, and selectively use knowledge from other agents?**
 
-Our current vision organizes this process around four operations:
+Our current vision organizes knowledge exchange around four operations:
 
 $$
-\boxed{\text{Represent}}\;\longrightarrow\;\boxed{\text{Communicate}}\;\longrightarrow\;\boxed{\text{Validate}}\;\longrightarrow\;\boxed{\text{Regulate}}.
+\boxed{\text{Represent}}
+\quad\longrightarrow\quad
+\boxed{\text{Communicate}}
+\quad\longrightarrow\quad
+\boxed{\text{Validate}}
+\quad\longrightarrow\quad
+\boxed{\text{Regulate}}.
 $$
 
-**Represent.** Construct a compact object that preserves selected information from local data or knowledge.
+**Represent.** Construct a compact object that preserves explicitly selected statistical, geometric, predictive, or decision-relevant information.
 
-**Communicate.** Exchange the representative rather than requiring access to raw observations or a common model state.
+**Communicate.** Exchange the representative rather than requiring raw observations or a shared model state.
 
-**Validate.** Evaluate received information relative to the receiver's own data, objective, model, and available evidence.
+**Validate.** Evaluate received information relative to the receiving agent's own data, model, objective, and available evidence.
 
-**Regulate.** Determine how strongly the received information should influence subsequent learning.
+**Regulate.** Determine how the validated information should influence subsequent learning.
 
-Under this view, distributed intelligence does not require every node to converge to a common internal state.
+The distinction between the last two operations is important.
 
-Instead, each learning agent can maintain its own data, model, task, and accumulated knowledge while communicating through representatives.
+Communication does not imply acceptance.
 
-A representative therefore becomes more than a data-reduction device.
+A receiving agent may strongly use a representative, incorporate it only weakly, retain it for later use, or reject it.
 
-> **It becomes a communication carrier for distributed intelligence.**
+Under this view, distributed intelligence does not require all nodes to converge to the same model or internal state. Each learning agent may maintain its own data, model, task, and accumulated knowledge while interacting with other agents through representatives.
+
+Representative Learning therefore evolves from
+
+$$
+\text{data compression}
+\quad\longrightarrow\quad
+\text{distributed learning}
+\quad\longrightarrow\quad
+\text{knowledge exchange}.
+$$
+
+A representative is no longer only a compact surrogate for local data.
+
+> **It becomes a communication carrier that can be constructed, evaluated, reused, and regulated across heterogeneous learning agents.**
 
 ---
 
-## Research Trajectory
+# Research Trajectory
 
 <p align="center">
-  <img src="assets/RepL_diagram0.png"
-       alt="Representative Learning research trajectory"
-       width="1000">
+  <img src="assets/RepL_diagram0.png"
+       alt="Representative Learning research trajectory"
+       width="1000">
 </p>
 
-The trajectory of this research can be summarized as
+The technical development of Representative Learning can be viewed along two connected dimensions.
+
+### Richer Representative Objects
 
 $$
-\text{data block}\longrightarrow\text{point representative}\longrightarrow\text{clouded and structured representatives}\longrightarrow\text{Representative Learning}\longrightarrow\text{distributed AI}.
+\text{point}
+\quad\longrightarrow\quad
+\text{clouded}
+\quad\longrightarrow\quad
+\text{structured}.
 $$
+
+Point representatives preserve selected information through weighted pseudo-observations. Clouded representatives additionally retain local distributional variation. Structured representatives extend the same principle to functions, images, and other data types.
+
+### Broader Roles for Representatives
+
+$$
+\text{approximation}
+\quad\longrightarrow\quad
+\text{distributed learning}
+\quad\longrightarrow\quad
+\text{heterogeneity assessment}
+\quad\longrightarrow\quad
+\text{collaboration}
+\quad\longrightarrow\quad
+\text{distributed AI}.
+$$
+
+The role of a representative therefore expands together with its mathematical form: from approximating a local dataset for model fitting to serving as a reusable object for communication and interaction among heterogeneous learners.
 
 ---
 
 ## Selected Publications
+
+### Point Representatives
 
 - K. Li and J. Yang. **Score-Matching Representative Approach for Big Data Analysis with Generalized Linear Models.** *Electronic Journal of Statistics*, 2022.
 
 - D. Zheng, K. Li, and J. Yang. **Response-Aided Score-Matching Representative Approaches for Big Data Analysis and Model Selection under Generalized Linear Models.** *Algorithms*, 2024.
 
 - K. Li. **Representative Learning for Distributed Learning with Heterogeneity and Asynchrony.** *Journal of Computational and Graphical Statistics*, 2026.
+  
+- K. Li, B. Wang. **Clouded Representatives and Score Matching for Distributed Quantile Regression.** *arXiv*, 2026.
+  
+- J. Casey, B. Wang, K. Li. **Representative Learning for Distributed Support Vector Machines.** *arXiv*, 2026.
+
+### Collaborative Learning
 
 - J. Casey, Q. Chen, M. Fan, B. Geng, R. Shterenberg, Z. Chen, and K. Li. **Distributed Collaborative Learning with Representative Knowledge Sharing.** *Mathematics*, 2025.
 
@@ -452,7 +558,7 @@ $$
 
 ## About
 
-I am **Keren Li**, an Assistant Professor at the University of Alabama at Birmingham. My research interests include statistical machine learning, distributed learning, data heterogeneity, and Representative Learning.
+I am **Keren Li**, an Assistant Professor at the University of Alabama at Birmingham. My research focuses on Representative Learning, statistical machine learning, distributed learning, and learning under data and model heterogeneity.
 
 [Research →](research.md) &nbsp;&nbsp;
 [Publications →](publications.md) &nbsp;&nbsp;
