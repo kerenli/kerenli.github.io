@@ -22,7 +22,7 @@ $$
 we construct a compact pseudo-dataset
 
 $$
-\widetilde{\mathcal{D}}_k=\mathcal{R}_k(\mathcal{D}_k),
+\tilde{\mathcal{D}}_k=\mathcal{R}_k(\mathcal{D}_k),
 $$
 
 called a **representative**.
@@ -89,7 +89,7 @@ Representative Learning takes a different route.
 Each node constructs
 
 $$
-\widetilde{\mathcal{D}}_k = \mathcal{R}_k(\mathcal{D}_k)
+\tilde{\mathcal{D}}_k = \mathcal{R}_k(\mathcal{D}_k)
 $$
 
 and communicates the **representative** instead.
@@ -138,19 +138,18 @@ A receiving node can evaluate whether a representative is relevant to its own da
 
 # Point Representatives
 
-
 The first generation of representatives takes the form
 
 $$
-\widetilde{\mathcal{D}}_k=(n_k,\widetilde{x}_k,\widetilde{y}_k),
+\tilde{\mathcal{D}}_k=(n_k,\tilde{x}_k,\tilde{y}_k),
 $$
 
-where $(\widetilde{x}_k,\widetilde{y}_k)$ is a pseudo-data point and $n_k$ records the amount of local data represented by this point.
+where $(\tilde{x}_k,\tilde{y}_k)$ is a pseudo-data point and $n_k$ records the amount of local data represented by this point.
 
 More generally, a local dataset may be divided into $r_k$ subsets,
 
 $$
-\widetilde{\mathcal{D}}_k=\{(n_{kh},\widetilde{x}_{kh},\widetilde{y}_{kh})\}_{h=1}^{r_k}.
+\tilde{\mathcal{D}}_k=\{(n_{kh},\tilde{x}_{kh},\tilde{y}_{kh})\}_{h=1}^{r_k}.
 $$
 
 This gives a collection of weighted pseudo-data points that can retain more local variation.
@@ -158,19 +157,36 @@ This gives a collection of weighted pseudo-data points that can retain more loca
 Our development of point representatives includes:
 
 **Mean Representative (MR)** 
-Preserve local means.
-
-**Score-Matching Representative (SMR)** 
-Preserve local score contributions under the current model.
-
-**Response-Aided Score-Matching Representative (RASMR)** 
-Refine local partitioning using response- and model-related information.
+The simplest construction preserves local feature and response means. It is model-free and yields an unbiased estimator for linear models, but does not account for the nonlinear relationship. It is robust but does not adapt to the current model during learning. 
 
 **Transformed Mean Representative (TMR)** 
-Construct mean-based representatives in a transformed response space to better account for nonlinear generalized linear models.
+TMR extends mean-based construction to nonlinear generalized linear models by averaging the response in the transformed space,
+
+$$
+\tilde{y}_k=G\{\frac{1}{n_k}\sum_{i\in I_k} g(y_i)\},
+$$
+
+where $g$ is the link function and $G=g^{-1}$. TMR reduces the bias induced by nonlinear links while retaining a simple one-shot construction, but it does not adapt as the global model evolves.
+
+**Score-Matching Representative (SMR)** 
+SMR makes representative construction model-adaptive by matching the local score contribution,
+
+$$
+\sum_{i\in I_k}\nu(\eta_i)r_i x_i=n_k\nu(\tilde{\eta}_k)\tilde{r}_k\tilde{x}_k.
+$$
+
+**Response-Aided Score-Matching Representative (RASMR)** 
+RASMR refines SMR by further partitioning heterogeneous local data using response- and model-related information. The refined blocks improve identifiability and stability of score-matching representatives, at the cost of constructing more representatives.
 
 **Anchored Score-Matching Representative (Anchored-SMR)** 
-Introduce an anchoring condition to obtain an identifiable score-matching representative and connect its location directly to local covariate geometry.
+Anchored-SMR resolves the underdetermined score-matching system by adding an intercept-matching condition. This yields a unique closed-form representative whose covariate component has the barycentric form
+
+$$
+\widetilde{x}_k=\frac{\sum_{i\in I_k}h(\eta_i,y_i)x_i}{\sum_{i\in I_k}h(\eta_i,y_i)},\quad
+h(\eta_i,y_i)=\nu(\eta_i)\{y_i-G(\eta_i)\}.
+$$
+
+It retains the model-adaptive property of score matching while improving identifiability, geometric representativeness, and stability.
 
 ---
 
@@ -179,7 +195,7 @@ Introduce an anchoring condition to obtain an identifiable score-matching repres
 Across several representative constructions, the representative location has a barycentric form
 
 $$
-\widetilde{x}=\frac{\sum_i w_i x_i}{\sum_i w_i}.
+\tilde{x}=\frac{\sum_i w_i x_i}{\sum_i w_i}.
 $$
 
 The weights $w_i$ change according to the information that the representative is designed to preserve.
@@ -198,7 +214,7 @@ A point representative is compact, but a single point may not adequately retain 
 This motivates a distributional extension:
 
 $$
-\widetilde{\mathcal{D}}_k=(n_k,Q_k),
+\tilde{\mathcal{D}}_k=(n_k,Q_k),
 $$
 
 where $Q_k$ is a probability distribution representing local information.
@@ -206,7 +222,7 @@ where $Q_k$ is a probability distribution representing local information.
 For a Gaussian cloud, the representative takes the form
 
 $$
-\widetilde{\mathcal{D}}_k=(n_k,\widetilde{x}_k,\widetilde{\Sigma}_k,\widetilde{y}_k).
+\tilde{\mathcal{D}}_k=(n_k,\tilde{x}_k,\tilde{\Sigma}_k,\tilde{y}_k).
 $$
 
 A point representative can be viewed as a limiting case in which the distribution degenerates to a point.
@@ -276,14 +292,6 @@ Our current work develops Representative Learning along several connected direct
 ### Foundations of Representative Learning
 
 Characterize what information a representative can preserve, what information should be preserved for a particular learning task, and how representative operators can be constructed systematically.
-
-### Clouded Representatives and Lifted ERM
-
-Develop distribution-valued representatives for learning problems in which local variation and geometry cannot be adequately summarized by point representatives.
-
-### Representative Learning for Nonsmooth Problems
-
-Extend representative construction to quantile regression, support vector machines, and other objectives involving nonsmooth loss functions.
 
 ### Functional Representative Learning
 
