@@ -137,9 +137,9 @@ $$
 $$
 
 <p align="center">
-  <img src="assets/point_representative_flow.png"
+  <img src="assets/flowchart_ASMR.png"
        alt="TMR initialization and Anchored-SMR updating"
-       width="720">
+       width="320">
 </p>
 
 ## 2.6 Barycentric Representativeness
