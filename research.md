@@ -281,3 +281,104 @@ $$
 - **Clouded-SMR** additionally matches the class-wise gradient of the lifted SVM objective and is reconstructed as the model changes.
 
 A receiving node augments its local lifted objective with clouded representatives received from other
+
+# 4. Structured Representatives
+
+Representative Learning is not restricted to finite-dimensional tabular observations. For structured data, the representative itself should retain a data-compatible structure while preserving information required for downstream learning.
+
+## 4.1 Distributed Function-on-Scalar Regression: Rep-FoS
+
+**Distributed Function-on-Scalar Regression via Representative Learning (Rep-FoS)**  
+Qianjiao Chen, Kyunghee Han, Keren Li
+
+Rep-FoS considers distributed function-on-scalar regression with sparse and irregular functional responses.
+
+For subject $i$,
+
+$$
+Y_i(t)=\alpha(t)+X_i^\top\boldsymbol{\beta}(t)+\varepsilon_i(t),
+$$
+
+where $Y_i(t)$ may be observed only at subject-specific time points
+
+$$
+T_{i,1},\ldots,T_{i,M_i}.
+$$
+
+The local data on node $h$ are
+
+$$
+\mathcal D_h=\{(X_i,\{(T_{i,m},Y_{i,m})\}_{m=1}^{M_i}):i\in\mathcal I_h\}.
+$$
+
+### Kernel-Weighted Local Objective
+
+At each node, estimation is based on the kernel-weighted functional least-squares objective
+
+$$
+L_h(\alpha,\beta)=\int_0^1\sum_{i\in\mathcal I_h}\sum_{m=1}^{M_i}[Y_{i,m}-\alpha(t)-x_i^\top\beta(t)]^2 K_b(T_{i,m}-t)dt.
+$$
+
+The kernel weights allow sparse and irregular observations to contribute locally around each evaluation point $t$.
+
+### Mean Representative Initialization
+
+Rep-FoS first constructs kernel-weighted mean representatives using
+
+$$
+S_{0h}(t)=\sum_{i\in\mathcal I_h}\sum_{m=1}^{M_i}K_b(T_{i,m}-t),
+$$
+
+together with the corresponding kernel-weighted covariate and response means.
+
+Each node communicates only
+
+$$
+\{S_{0h}(t),\bar X_h(t),\bar Y_h(t)\}.
+$$
+
+The central server aggregates these quantities to obtain an MR estimate
+
+$$
+\beta_{\mathrm{Rep-FoS}}^{(0)}(t)=\widehat{\beta}_{\mathrm{MR}}(t).
+$$
+
+Thus, MR provides a one-round initialization before model-adaptive score matching begins.
+
+### Functional Score Matching
+
+The central idea of Rep-FoS is to construct node-level representatives whose score approximates the score of the original sparse functional observations:
+
+$$
+U_h^{\mathrm{rep}}(\theta)\approx U_h(\theta).
+$$
+
+Consequently,
+
+$$
+\sum_{h=1}^{H}U_h^{\mathrm{rep}}(\theta)\approx\sum_{h=1}^{H}U_h(\theta).
+$$
+
+At an evaluation point $t$, the representative covariate again has a weighted-average structure,
+
+$$
+\tilde X_h(t)=\frac{\sum_{i\in\mathcal I_h}\sum_{m=1}^{M_i}K_b(T_{i,m}-t)[\eta_i(t)-Y_{i,m}(t)]
+X_i(t)}{\sum_{i\in\mathcal I_h}\sum_{m=1}^{M_i}K_b(T_{i,m}-t)[\eta_i(t)-Y_{i,m}(t)]}.
+$$
+
+This provides another instance of the barycentric representativeness principle, now with weights determined jointly by **time localization** through the kernel and **model information** through the score residual.
+
+### Distributed Updating
+
+Rep-FoS proceeds iteratively:
+
+1. initialize the coefficient functions using MR;
+2. broadcast the current coefficient estimate to the computing nodes;
+3. construct local score-matching representatives;
+4. transmit only representative quantities to the central server;
+5. update the global functional coefficient estimate;
+6. repeat.
+
+Raw subject-level functional observations remain local throughout the procedure.
+
+Rep-FoS therefore extends representative learning in two directions simultaneously: from finite-dimensional responses to functional responses, and from static representatives to representatives indexed by the functional domain and updated with the current coefficient estimate.
