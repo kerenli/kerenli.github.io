@@ -150,7 +150,7 @@ where $(\widetilde{x}_k,\widetilde{y}_k)$ is a pseudo-data point and $n_k$ recor
 More generally, a local dataset may be divided into $r_k$ subsets,
 
 $$
-\widetilde{\mathcal{D}}_k=\big\{(n_{kh},\widetilde{x}_{kh},\widetilde{y}_{kh})\big\}_{h=1}^{r_k}.
+\widetilde{\mathcal{D}}_k=\{(n_{kh},\widetilde{x}_{kh},\widetilde{y}_{kh})\}_{h=1}^{r_k}.
 $$
 
 This gives a collection of weighted pseudo-data points that can retain more local variation.
@@ -228,7 +228,7 @@ $$
 Let $L(\theta;x,y)$ denote a loss function. For a lifted data point $Q$, define
 
 $$
-L(\theta;Q)=\mathbb{E}_{(X,Y)\sim Q}\left[L(\theta;X,Y)\right].
+L(\theta;Q)=\mathbb{E}_{(X,Y)\sim Q}[L(\theta;X,Y)].
 $$
 
 This leads to **Lifted Empirical Risk Minimization**, which provides a common learning framework for point observations and distributional representatives.
