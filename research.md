@@ -289,7 +289,6 @@ Representative Learning is not restricted to finite-dimensional tabular observat
 ## 4.1 Distributed Function-on-Scalar Regression: Rep-FoS
 
 **Distributed Function-on-Scalar Regression via Representative Learning (Rep-FoS)**  
-Qianjiao Chen, Kyunghee Han, Keren Li
 
 Rep-FoS considers distributed function-on-scalar regression with sparse and irregular functional responses.
 
@@ -386,7 +385,6 @@ Rep-FoS therefore extends representative learning in two directions simultaneous
 ## 4.2 Projection-Based Representatives for Images
 
 **Projection-Based Representative Learning for Image Classification in Heterogeneous Distributed Systems**  
-Jiaqi Wang, Yu Tang, Keren Li
 
 Image data create a different challenge for Representative Learning.
 
@@ -401,11 +399,7 @@ PBR takes an intermediate route:
 Within each response class $c$, node $k$ computes a local Tucker decomposition
 
 $$
-x_i
-\approx
-\mathcal G_i
-\times_1 U_{k,c,1}
-\times_2 U_{k,c,2}.
+x_i\approx\mathcal G_i\times_1 U_{k,c,1}\times_2 U_{k,c,2}.
 $$
 
 The Tucker factors and individual cores remain local. They define a data-derived coordinate system for representative construction and are not themselves communicated.
@@ -417,32 +411,19 @@ Because substantial heterogeneity may remain within a class, Tucker cores are fu
 For cluster $q$, let
 
 $$
-\Delta
-=
-\left\{
-w:
-w_i\ge 0,\;
-\sum_{i=1}^{n_q}w_i=1
-\right\}.
+\Delta=\{w:w_i\ge 0,\;\sum_{i=1}^{n_q}w_i=1\}.
 $$
 
 PBR constructs the representative core
 
 $$
-\tilde{\mathcal G}_q(w)
-=
-\sum_{i=1}^{n_q}
-w_i\mathcal G_i
+\tilde{\mathcal G}_q(w)=\sum_{i=1}^{n_q}w_i\mathcal G_i
 $$
 
 and reconstructs the representative image
 
 $$
-\tilde{x}_q(w)
-=
-\tilde{\mathcal G}_q(w)
-\times_1U_{q,1}
-\times_2U_{q,2}.
+\tilde{x}_q(w)=\tilde{\mathcal G}_q(w)\times_1U_{q,1}\times_2U_{q,2}.
 $$
 
 The simplex constraint keeps the representative explicitly connected to the local image cluster.
@@ -454,18 +435,7 @@ Geometric structure alone is not sufficient. PBR also requires the representativ
 At communication round $r$, define
 
 $$
-D_q^{(r)}(w)
-=
-\left\|
-f_{\theta_q^{(r-1)}}
-\left(
-\tilde{x}_q(w)
-\right)
--
-\sum_{i=1}^{n_q}
-w_i
-f_{\theta_q^{(r-1)}}(x_i)
-\right\|_2^2.
+D_q^{(r)}(w)=\|f_{\theta_q^{(r-1)}}(\tilde{x}_q(w))-\sum_{i=1}^{n_q}w_i f_{\theta_q^{(r-1)}}(x_i)\|_2^2.
 $$
 
 The target is therefore not a one-hot class label. Instead, the representative is matched to the actual predictive behavior of the current local model.
