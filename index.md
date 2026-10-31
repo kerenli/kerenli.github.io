@@ -188,6 +188,15 @@ $$
 
 It retains the model-adaptive property of score matching while improving identifiability, geometric representativeness, and stability.
 
+**From means to model-adaptive representatives:**  
+MR → TMR introduces nonlinear structure → SMR introduces model/gradient information → RASMR refines local heterogeneity → Anchored-SMR stabilizes and identifies score matching.
+
+<p align="center">
+  <img src="assets/flowchart_ASMR.png"
+       alt="Representative Learning architecture"
+       width="800">
+</p>
+
 ---
 
 ## A Recurring Structure
