@@ -396,23 +396,30 @@ Our current research focuses less on adding individual representative constructi
 
 ### Foundations of Representative Learning
 
-Existing representative constructions preserve different types of information: means and moments, score functions, local geometry, distributional variability, or predictive behavior.
+Representative Learning now includes representatives with substantially different mathematical forms:
 
-A fundamental question is whether these constructions can be understood through a common theory.
+- weighted pseudo-points,
+- probability distributions,
+- time-indexed functional representatives,
+- structured image-format representatives.
 
-We are developing a mathematical framework for **representative operators**
+Yet these constructions share a common objective: replace inaccessible local information by a compact object that preserves specified properties needed for downstream learning.
+
+This motivates a general theory of **representative operators**
 
 $$
-\mathcal{R}:\mathcal{D}\longrightarrow\tilde{\mathcal{D}},
+\mathcal{R}:\mathcal{D}\longrightarrow\tilde{\mathcal{D}}.
 $$
 
-with three central questions:
+The central questions are:
 
 > **What can a representative preserve?**
 
 > **What should it preserve for a given downstream task?**
 
 > **How complex must a representative be to preserve that information?**
+
+> **How should representative information from different learners be composed?**
 
 The goal is to move Representative Learning from a collection of model-specific constructions toward a general theory of information preservation through representative objects.
 
@@ -536,7 +543,7 @@ The technical development of Representative Learning can be viewed along two con
             |                     |                     |
           Point                 Clouded              Structured
             |                     |                     |
-      GLM / smooth          Distributional       +-----+------+
+      GLM / smooth          Distributional        +-----+------+
       objectives            representation        |            |
             |                     |             Function      Image
       MR / TMR / SMR        Lifted ERM          Rep-FoS        PBR
