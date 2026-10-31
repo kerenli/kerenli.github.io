@@ -194,7 +194,7 @@ MR → TMR introduces nonlinear structure → SMR introduces model/gradient info
 <p align="center">
   <img src="assets/flowchart_ASMR.png"
        alt="Representative Learning architecture"
-       width="400">
+       width="250">
 </p>
 
 ---
@@ -247,18 +247,16 @@ Distributional representatives create a natural question: how should an ordinary
 We address this by lifting an observation from a point to a probability distribution,
 
 $$
-(x_i,y_i)\quad\longrightarrow\quad Q_i.
+(x_i,y_i)\quad\rightarrow\quad Q_i.
 $$
 
-Let $L(\theta;x,y)$ denote a loss function. For a lifted data point $Q$, define
+For a loss $L(\theta;x,y)$, define the lifted loss
 
 $$
-L(\theta;Q)=\mathbb{E}_{(X,Y)\sim Q}[L(\theta;X,Y)].
+L(\theta;Q_i)=\mathbb{E}_{(X,Y)\sim Q_i}L(\theta;X,Y).
 $$
 
-This leads to **Lifted Empirical Risk Minimization**, which provides a common learning framework for point observations and distributional representatives.
-
-Our current work uses this formulation to develop clouded representatives for nonsmooth learning problems, including quantile regression and support vector machines.
+This leads to **Lifted Empirical Risk Minimization (Lifted ERM)**. A point observation is recovered when $Q_i$ degenerates to a point mass, while a nondegenerate $Q_i$ retains local distributional information.
 
 ---
 
