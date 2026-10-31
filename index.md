@@ -530,13 +530,17 @@ The technical development of Representative Learning can be viewed along two con
 
 ### Richer Representative Objects
 
-$$
-\text{point}
-\quad\longrightarrow\quad
-\text{clouded}
-\quad\longrightarrow\quad
-\text{structured}.
-$$
+                            Representative
+                                  |
+            +---------------------+---------------------+
+            |                     |                     |
+          Point                 Clouded              Structured
+            |                     |                     |
+      GLM / smooth          Distributional       +-----+------+
+      objectives            representation        |            |
+            |                     |             Function      Image
+      MR / TMR / SMR        Lifted ERM          Rep-FoS        PBR
+      RASMR / Anchored       QR / SVM
 
 Point representatives preserve selected information through weighted pseudo-observations. Clouded representatives additionally retain local distributional variation. Structured representatives extend the same principle to functions, images, and other data types.
 
