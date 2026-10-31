@@ -297,7 +297,7 @@ Distributed SVM becomes difficult when individual nodes observe substantially di
 <p align="center">
   <img src="assets/svm_toy2.png"
        alt="Distributed SVM under heterogeneous local data"
-       width="450">
+       width="650">
 </p>
 
 The same lifted framework applies to the nonsmooth hinge loss. We lift
