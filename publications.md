@@ -23,7 +23,7 @@ title: Publications
   https://arxiv.org/abs/
 
 - Chen, Q., Han, K., **Li, K.†**  
-  *Representative Learning for Distributed Functional Data Analysis*  
+  *Distributed Function-on-Scalar Regression via Representative Learning*  
   under preparation
 
 - Wang, J., Tang, Y.,  **Li, K.†**  
