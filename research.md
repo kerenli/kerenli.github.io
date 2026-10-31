@@ -43,12 +43,6 @@ $$
 
 In a centralized architecture, a coordinating unit learns from $\tilde{\mathcal D}$ in place of the inaccessible distributed data. In a decentralized architecture, node $k$ combines its local data with representatives received from other nodes.
 
-<p align="center">
-  <img src="assets/representative_arch.png"
-       alt="Representative Learning architecture"
-       width="800">
-</p>
-
 The central design principle is to separate two decisions:
 
 - **Construction:** what information should the sender preserve?
@@ -136,11 +130,6 @@ $$
 \tilde{\beta}^{(t+1)}=\tilde{\beta}^{(t)}-\gamma S(\tilde{\beta}^{(t)};\tilde{\mathcal D}^{(t)}).
 $$
 
-<p align="center">
-  <img src="assets/flowchart_ASMR.png"
-       alt="TMR initialization and Anchored-SMR updating"
-       width="320">
-</p>
 
 ## 2.6 Barycentric Representativeness
 
@@ -171,12 +160,6 @@ $$
 $$
 
 which we call a **clouded representative**.
-
-<p align="center">
-  <img src="assets/point_clouded_rep.png"
-       alt="Point and clouded representatives"
-       width="850">
-</p>
 
 The location $\tilde{x}_k$ describes where the representative information is centered, while $\tilde{\Sigma}_k$ carries local variation and geometry.
 
@@ -265,11 +248,6 @@ $$
 
 The lifted loss is smooth for nondegenerate covariance, remains convex, and converges to the ordinary hinge loss as $\Sigma\rightarrow0$.
 
-<p align="center">
-  <img src="assets/svm_toy2.png"
-       alt="Distributed SVM under heterogeneous local data"
-       width="680">
-</p>
 
 Representatives are constructed separately for each class:
 
