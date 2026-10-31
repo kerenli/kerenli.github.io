@@ -292,6 +292,14 @@ Thus, the barycentric representativeness principle persists beyond point represe
 
 ### Support Vector Machines
 
+Distributed SVM becomes difficult when individual nodes observe substantially different local class configurations.
+
+<p align="center">
+  <img src="assets/svm_toy2.png"
+       alt="Distributed SVM under heterogeneous local data"
+       width="450">
+</p>
+
 The same lifted framework applies to the nonsmooth hinge loss. We lift
 
 $$
