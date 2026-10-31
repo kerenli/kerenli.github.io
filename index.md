@@ -347,45 +347,45 @@ Consider
 $$
 Y_i(t)=\alpha(t)+X_i^\top\beta(t)+\varepsilon_i(t).
 $$
- 
+
 Rather than communicating subject-level functional observations, each node constructs kernel-weighted representatives that preserve the local score information required for estimating the coefficient functions.
- 
+
 Rep-FoS uses a mean representative for initialization and then iteratively updates score-matching representatives as the functional coefficient estimate evolves. Thus, the representative principle extends from a weighted pseudo-point to a collection of time-indexed representative quantities.
- 
+
 ### Image Representatives: PBR
 
 For distributed image classification, direct pixel averaging may lose image structure, while communicating latent features makes the shared information dependent on a particular model representation.
- 
+
 We therefore develop **Projection-Based Representatives (PBR)**. For an image $x_i$, a local Tucker decomposition gives
- 
+
 $$
 x_i\approx\mathcal G_i\times_1 U_{k,c,1}\times_2 U_{k,c,2}.
 $$
- 
+
 Within a local image cluster, PBR constructs a representative Tucker core
- 
+
 $$
 \tilde{\mathcal G}_q(w)=\sum_{i=1}^{n_q}w_i\mathcal G_i
 $$
- 
+
 and reconstructs the representative as an image in the original data domain.
- 
+
 The weights are adapted through predictive matching, while Tucker-space anchoring keeps the representative connected to the local image geometry.
- 
+
 Thus, model information influences **which representative is constructed**, but does not become the communication format itself.
- 
+
 ### Toward General Structured Representatives
- 
+
 These developments suggest a general principle:
- 
+
 > **A representative should preserve task-relevant information while remaining in a form that can be interpreted and reused independently of the sender's internal model.**
- 
+
 The development of Representative Learning therefore shifts from
- 
+
 > **How should we construct the best pseudo-point?**
- 
+
 to
- 
+
 > **What information should a representative preserve, and what mathematical object should carry that information?**
 
 ---
