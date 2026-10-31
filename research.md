@@ -382,3 +382,151 @@ Rep-FoS proceeds iteratively:
 Raw subject-level functional observations remain local throughout the procedure.
 
 Rep-FoS therefore extends representative learning in two directions simultaneously: from finite-dimensional responses to functional responses, and from static representatives to representatives indexed by the functional domain and updated with the current coefficient estimate.
+
+## 4.2 Projection-Based Representatives for Images
+
+**Projection-Based Representative Learning for Image Classification in Heterogeneous Distributed Systems**  
+Jiaqi Wang, Yu Tang, Keren Li
+
+Image data create a different challenge for Representative Learning.
+
+Direct pixel averaging remains model-independent but may destroy important image structure. Latent-feature communication may retain task-relevant structure, but the communicated object is tied to a particular encoder or model architecture.
+
+PBR takes an intermediate route:
+
+> **construct in a structured representation space, communicate in the original image domain.**
+
+### Local Tucker Representation
+
+Within each response class $c$, node $k$ computes a local Tucker decomposition
+
+$$
+x_i
+\approx
+\mathcal G_i
+\times_1 U_{k,c,1}
+\times_2 U_{k,c,2}.
+$$
+
+The Tucker factors and individual cores remain local. They define a data-derived coordinate system for representative construction and are not themselves communicated.
+
+Because substantial heterogeneity may remain within a class, Tucker cores are further divided into fine clusters.
+
+### Tucker-Induced Representative
+
+For cluster $q$, let
+
+$$
+\Delta
+=
+\left\{
+w:
+w_i\ge 0,\;
+\sum_{i=1}^{n_q}w_i=1
+\right\}.
+$$
+
+PBR constructs the representative core
+
+$$
+\tilde{\mathcal G}_q(w)
+=
+\sum_{i=1}^{n_q}
+w_i\mathcal G_i
+$$
+
+and reconstructs the representative image
+
+$$
+\tilde{x}_q(w)
+=
+\tilde{\mathcal G}_q(w)
+\times_1U_{q,1}
+\times_2U_{q,2}.
+$$
+
+The simplex constraint keeps the representative explicitly connected to the local image cluster.
+
+### Predictive Matching
+
+Geometric structure alone is not sufficient. PBR also requires the representative to reproduce the predictive behavior of the observations it represents.
+
+At communication round $r$, define
+
+$$
+D_q^{(r)}(w)
+=
+\left\|
+f_{\theta_q^{(r-1)}}
+\left(
+\tilde{x}_q(w)
+\right)
+-
+\sum_{i=1}^{n_q}
+w_i
+f_{\theta_q^{(r-1)}}(x_i)
+\right\|_2^2.
+$$
+
+The target is therefore not a one-hot class label. Instead, the representative is matched to the actual predictive behavior of the current local model.
+
+### PBR Objective
+
+Starting from equal weights
+
+$$
+w_q^{(0)}=(\frac1{n_q},\ldots,\frac1{n_q})^\top,
+$$
+
+PBR solves
+
+$$
+w_q^{(r)}=\arg\min_{w\in\Delta}\{D_q^{(r)}(w)+\gamma_q(w)(w-w_q^{(0)})^\top A_q (w-w_q^{(0)})\},
+$$
+
+where $A_q$ is the Tucker-core Gram matrix.
+
+The two terms have distinct roles:
+
+- **predictive matching** adapts the representative to the current learning task;
+- **Tucker-space anchoring** controls departure from the local image geometry.
+
+The final communicated object remains an image,
+
+$$
+\tilde{x}_q^{(r)}=\tilde{x}_q(w_q^{(r)}).
+$$
+
+Thus, model information affects representative construction without becoming the communication format.
+
+### Representative Weight and Memory
+
+PBR also assigns each communicated pseudo-image an effective statistical weight. Historical representatives are retained with geometric temporal decay,
+
+$$
+r(\tau)=(1-e^{-1})e^{-\tau}.
+$$
+
+This creates a finite representative memory in which newer representatives have larger individual influence while older representatives decay and are eventually removed.
+
+A receiving node therefore does not need to replace one representative by another at every communication round. It can maintain a weighted history of communicated information.
+
+### Local-Representative Mixture Training
+
+Local data and received representatives form separate training streams,
+
+$$
+L_k^{(b)}(\theta_k)=\frac{1-\alpha_k}{B_L}\sum_{i\in\mathcal B_k^L}\ell(\theta_k;x_i,y_i)+\frac{\alpha_k}{B_R}
+\sum_{h\in\mathcal H_k^{(r)}}b_h\ell(\theta_k;\tilde{x}_h,\tilde y_h).
+$$
+
+Here the representative weights determine how representative information is distributed within the representative stream, while $\alpha_k$ controls the overall strength of cross-node information relative to local data.
+
+PBR therefore connects four levels of representative design:
+
+$$
+\text{data structure}\rightarrow
+\text{representative geometry}\rightarrow
+\text{predictive adaptation}\rightarrow
+\text{representative memory}.
+$$
