@@ -182,7 +182,7 @@ RASMR refines SMR by further partitioning heterogeneous local data using respons
 Anchored-SMR resolves the underdetermined score-matching system by adding an intercept-matching condition. This yields a unique closed-form representative whose covariate component has the barycentric form
 
 $$
-\widetilde{x}_k=\frac{\sum_{i\in I_k}h(\eta_i,y_i)x_i}{\sum_{i\in I_k}h(\eta_i,y_i)},\quad
+\tilde{x}_k=\frac{\sum_{i\in I_k}h(\eta_i,y_i)x_i}{\sum_{i\in I_k}h(\eta_i,y_i)},\quad
 h(\eta_i,y_i)=\nu(\eta_i)\{y_i-G(\eta_i)\}.
 $$
 
@@ -235,7 +235,7 @@ which we call a **clouded representative**.
 <p align="center">
   <img src="assets/point_clouded_rep.png"
        alt="Point and clouded representatives"
-       width="850">
+       width="450">
 </p>
 
 ---
@@ -257,6 +257,66 @@ L(\theta;Q_i)=\mathbb{E}_{(X,Y)\sim Q_i}L(\theta;X,Y).
 $$
 
 This leads to **Lifted Empirical Risk Minimization (Lifted ERM)**. A point observation is recovered when $Q_i$ degenerates to a point mass, while a nondegenerate $Q_i$ retains local distributional information.
+
+### Linear Quantile Regression
+
+For quantile regression, we lift each covariate to
+
+$$
+X_i\sim\mathcal N(x_i,s^2I).
+$$
+
+Let
+
+$$
+r_i=y_i-x_i^\top\beta-\beta_0,\quad s_\beta=s\|\beta\|,\quad a_i=\frac{r_i}{s_\beta}, \quad w_i=\tau-\Phi(-a_i).
+$$
+
+The Gaussian-lifted quantile risk has the closed form
+
+$$
+R_{Q_n}(\theta)=\frac{1}{n}\sum_{i=1}^n[r_iw_i+s_\beta\phi(a_i)].
+$$
+
+Gaussian lifting smooths the check-loss objective for a nondegenerate cloud while recovering classical quantile regression as the cloud scale tends to zero.
+
+We then construct a **Clouded Score-Matching Representative (Clouded-SMR)** by matching the gradient of the representative lifted risk to the average local lifted gradient.
+
+Its representative location again takes a barycentric form,
+
+$$
+\tilde{x}_k=\frac{\sum_{i\in I_k}w_i^\circ x_i}{\sum_{i\in I_k}w_i^\circ}.
+$$
+
+Thus, the barycentric representativeness principle persists beyond point representatives: the representative remains a weighted local center, while the cloud additionally carries scale and covariance information.
+
+### Support Vector Machines
+
+The same lifted framework applies to the nonsmooth hinge loss. We lift
+
+$$
+X_i\sim\mathcal N(x_i,\Sigma)
+$$
+
+and define the lifted hinge loss
+
+$$
+\tilde{\ell}_i(w,b)=\mathbb E[\max\{0,1-y_i(w^\top X_i+b)\}].
+$$
+
+Let
+
+$$
+\nu_i=y_i(w^\top x_i+b),\quad s^2=w^\top\Sigma w,\quad a_i=\frac{1-\nu_i}{s}.
+$$
+
+Then the expectation has the exact closed form
+
+$$
+\tilde{\ell}_i(w,b)=(1-\nu_i)\Phi(a_i)+s\phi(a_i).
+$$
+
+The Gaussian lifting produces a smooth convex objective for nondegenerate clouds and recovers the ordinary hinge loss as the covariance degenerates to zero.
 
 ---
 
