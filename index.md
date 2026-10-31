@@ -142,9 +142,7 @@ A receiving node can evaluate whether a representative is relevant to its own da
 The first generation of representatives takes the form
 
 $$
-\widetilde{\mathcal{D}}_k
-=
-(n_k,\widetilde{x}_k,\widetilde{y}_k),
+\widetilde{\mathcal{D}}_k=(n_k,\widetilde{x}_k,\widetilde{y}_k),
 $$
 
 where $(\widetilde{x}_k,\widetilde{y}_k)$ is a pseudo-data point and $n_k$ records the amount of local data represented by this point.
@@ -152,11 +150,7 @@ where $(\widetilde{x}_k,\widetilde{y}_k)$ is a pseudo-data point and $n_k$ recor
 More generally, a local dataset may be divided into $r_k$ subsets,
 
 $$
-\widetilde{\mathcal{D}}_k
-=
-\left\{
-(n_{kh},\widetilde{x}_{kh},\widetilde{y}_{kh})
-\right\}_{h=1}^{r_k}.
+\widetilde{\mathcal{D}}_k=\left\{(n_{kh},\widetilde{x}_{kh},\widetilde{y}_{kh})\right\}_{h=1}^{r_k}.
 $$
 
 This gives a collection of weighted pseudo-data points that can retain more local variation.
@@ -185,10 +179,7 @@ Introduce an anchoring condition to obtain an identifiable score-matching repres
 Across several representative constructions, the representative location has a barycentric form
 
 $$
-\widetilde{x}
-=
-\frac{\sum_i w_i x_i}
-     {\sum_i w_i}.
+\widetilde{x}=\frac{\sum_i w_i x_i}{\sum_i w_i}.
 $$
 
 The weights $w_i$ change according to the information that the representative is designed to preserve.
@@ -207,9 +198,7 @@ A point representative is compact, but a single point may not adequately retain 
 This motivates a distributional extension:
 
 $$
-\widetilde{\mathcal{D}}_k
-=
-(n_k,Q_k),
+\widetilde{\mathcal{D}}_k=(n_k,Q_k),
 $$
 
 where $Q_k$ is a probability distribution representing local information.
@@ -217,9 +206,7 @@ where $Q_k$ is a probability distribution representing local information.
 For a Gaussian cloud, the representative takes the form
 
 $$
-\widetilde{\mathcal{D}}_k
-=
-(n_k,\widetilde{x}_k,\widetilde{\Sigma}_k,\widetilde{y}_k).
+\widetilde{\mathcal{D}}_k=(n_k,\widetilde{x}_k,\widetilde{\Sigma}_k,\widetilde{y}_k).
 $$
 
 A point representative can be viewed as a limiting case in which the distribution degenerates to a point.
@@ -235,20 +222,13 @@ Distributional representatives create a natural question: how should an ordinary
 We address this by lifting an observation from a point to a probability distribution,
 
 $$
-(x_i,y_i)
-\quad\longrightarrow\quad
-Q_i.
+(x_i,y_i)\quad\longrightarrow\quad Q_i.
 $$
 
 Let $L(\theta;x,y)$ denote a loss function. For a lifted data point $Q$, define
 
 $$
-L(\theta;Q)
-=
-\mathbb{E}_{(X,Y)\sim Q}
-\left[
-L(\theta;X,Y)
-\right].
+L(\theta;Q)=\mathbb{E}_{(X,Y)\sim Q}\left[L(\theta;X,Y)\right].
 $$
 
 This leads to **Lifted Empirical Risk Minimization**, which provides a common learning framework for point observations and distributional representatives.
@@ -336,13 +316,7 @@ For distributed AI, the question becomes broader:
 Our current vision organizes this process around four operations:
 
 $$
-\boxed{\text{Represent}}
-\;\longrightarrow\;
-\boxed{\text{Communicate}}
-\;\longrightarrow\;
-\boxed{\text{Validate}}
-\;\longrightarrow\;
-\boxed{\text{Regulate}}.
+\boxed{\text{Represent}}\;\longrightarrow\;\boxed{\text{Communicate}}\;\longrightarrow\;\boxed{\text{Validate}}\;\longrightarrow\;\boxed{\text{Regulate}}.
 $$
 
 **Represent.** Construct a compact object that preserves selected information from local data or knowledge.
@@ -374,15 +348,7 @@ A representative therefore becomes more than a data-reduction device.
 The trajectory of this research can be summarized as
 
 $$
-\text{data block}
-\longrightarrow
-\text{point representative}
-\longrightarrow
-\text{clouded and structured representatives}
-\longrightarrow
-\text{Representative Learning}
-\longrightarrow
-\text{distributed AI}.
+\text{data block}\longrightarrow\text{point representative}\longrightarrow\text{clouded and structured representatives}\longrightarrow\text{Representative Learning}\longrightarrow\text{distributed AI}.
 $$
 
 ---
