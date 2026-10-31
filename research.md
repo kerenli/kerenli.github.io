@@ -73,7 +73,7 @@ More generally, a node may construct several representatives,
 
 $$
 \tilde{\mathcal D}_k=
-\left\{
+\{
 (n_{kh},\tilde{x}_{kh},\tilde{y}_{kh})
 \right\}_{h=1}^{r_k},
 $$
@@ -92,7 +92,7 @@ $$
 \tilde{x}_k=\bar{x}_k,
 \quad
 \tilde{y}_k=
-G\left\{
+G\{
 \frac{1}{n_k}
 \sum_{i\in I_k}g(y_i)
 \right\},
@@ -163,7 +163,7 @@ Because Anchored-SMR encodes directional information at the current model, it is
 $$
 \tilde{\beta}^{(t+1)}=\tilde{\beta}^{(t)}-
 \gamma
-S\left(
+S(
 \tilde{\beta}^{(t)};
 \tilde{\mathcal D}^{(t)}
 \right).
@@ -229,7 +229,7 @@ For a loss $L(\theta;x,y)$, the lifted loss is
 $$
 L(\theta;Q_i)=
 \mathbb E_{(X,Y)\sim Q_i}
-\left[
+[
 L(\theta;X,Y)
 \right].
 $$
@@ -265,7 +265,7 @@ $$
 R_{Q_n}(\theta)=
 \frac{1}{n}
 \sum_{i=1}^{n}
-\left[
+[
 r_iw_i+s_\beta\phi(a_i)
 \right].
 $$
@@ -306,7 +306,7 @@ The lifted hinge loss is
 $$
 \tilde{\ell}_i(w,b)=
 \mathbb E
-\left[
+[
 \max\{0,1-y_i(w^\top X_i+b)\}
 \right].
 $$
