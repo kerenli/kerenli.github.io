@@ -365,7 +365,7 @@ $$
 Within a local image cluster, PBR constructs a representative Tucker core
  
 $$
-\widetilde{\mathcal G}_q(w)=\sum_{i=1}^{n_q}w_i\mathcal G_i
+\tilde{\mathcal G}_q(w)=\sum_{i=1}^{n_q}w_i\mathcal G_i
 $$
  
 and reconstructs the representative as an image in the original data domain.
@@ -403,7 +403,7 @@ A fundamental question is whether these constructions can be understood through 
 We are developing a mathematical framework for **representative operators**
 
 $$
-\mathcal{R}:\mathcal{D}\longrightarrow\widetilde{\mathcal{D}},
+\mathcal{R}:\mathcal{D}\longrightarrow\tilde{\mathcal{D}},
 $$
 
 with three central questions:
