@@ -194,7 +194,7 @@ MR → TMR introduces nonlinear structure → SMR introduces model/gradient info
 <p align="center">
   <img src="assets/flowchart_ASMR.png"
        alt="Representative Learning architecture"
-       width="800">
+       width="400">
 </p>
 
 ---
@@ -218,25 +218,25 @@ This motivates a principle that appears repeatedly in our work:
 
 # From Points to Clouds
 
-A point representative is compact, but a single point may not adequately retain local variability or geometric structure.
-
-This motivates a distributional extension:
+A point representative is compact, but a single pseudo-observation may not adequately retain local variability or geometric structure. We therefore extend the representative from a point to a probability distribution,
 
 $$
 \tilde{\mathcal{D}}_k=(n_k,Q_k),
 $$
 
-where $Q_k$ is a probability distribution representing local information.
-
-For a Gaussian cloud, the representative takes the form
+When $Q_k$ belongs to a Gaussian family, the representative takes the form
 
 $$
-\tilde{\mathcal{D}}_k=(n_k,\tilde{x}_k,\tilde{\Sigma}_k,\tilde{y}_k).
+\tilde{\mathcal{D}}_k=(n_k,\tilde{x}_k,\tilde{\Sigma}_k,\tilde{y}_k),
 $$
 
-A point representative can be viewed as a limiting case in which the distribution degenerates to a point.
+which we call a **clouded representative**.
 
-The additional covariance structure allows a **clouded representative** to describe not only where representative information is located, but also how local information varies around that location.
+<p align="center">
+  <img src="assets/point_clouded_rep.png"
+       alt="Point and clouded representatives"
+       width="850">
+</p>
 
 ---
 
