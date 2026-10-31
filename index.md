@@ -150,7 +150,7 @@ where $(\widetilde{x}_k,\widetilde{y}_k)$ is a pseudo-data point and $n_k$ recor
 More generally, a local dataset may be divided into $r_k$ subsets,
 
 $$
-\widetilde{\mathcal{D}}_k=\left\{(n_{kh},\widetilde{x}_{kh},\widetilde{y}_{kh})\right\}_{h=1}^{r_k}.
+\widetilde{\mathcal{D}}_k=\big\{(n_{kh},\widetilde{x}_{kh},\widetilde{y}_{kh})\big\}_{h=1}^{r_k}.
 $$
 
 This gives a collection of weighted pseudo-data points that can retain more local variation.
