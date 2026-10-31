@@ -30,8 +30,7 @@ $$
 Node $k$ constructs a representative dataset
 
 $$
-\tilde{\mathcal D}_k=
-\mathcal R_k(\mathcal D_k),
+\tilde{\mathcal D}_k=\mathcal R_k(\mathcal D_k),
 $$
 
 where $\mathcal R_k$ is a representative operator designed to preserve selected information from $\mathcal D_k$.
@@ -39,8 +38,7 @@ where $\mathcal R_k$ is a representative operator designed to preserve selected 
 The communicated collection is
 
 $$
-\tilde{\mathcal D}=
-\bigcup_{k=1}^{K}\tilde{\mathcal D}_k.
+\tilde{\mathcal D}=\bigcup_{k=1}^{K}\tilde{\mathcal D}_k.
 $$
 
 In a centralized architecture, a coordinating unit learns from $\tilde{\mathcal D}$ in place of the inaccessible distributed data. In a decentralized architecture, node $k$ combines its local data with representatives received from other nodes.
@@ -63,8 +61,7 @@ The central design principle is to separate two decisions:
 A point representative has the form
 
 $$
-\tilde{\mathcal D}_k=
-(n_k,\tilde{x}_k,\tilde{y}_k),
+\tilde{\mathcal D}_k=(n_k,\tilde{x}_k,\tilde{y}_k),
 $$
 
 where $(\tilde{x}_k,\tilde{y}_k)$ is a pseudo-observation and $n_k$ is its weight.
@@ -72,10 +69,7 @@ where $(\tilde{x}_k,\tilde{y}_k)$ is a pseudo-observation and $n_k$ is its weigh
 More generally, a node may construct several representatives,
 
 $$
-\tilde{\mathcal D}_k=
-\{
-(n_{kh},\tilde{x}_{kh},\tilde{y}_{kh})
-\right\}_{h=1}^{r_k},
+\tilde{\mathcal D}_k = \{(n_{kh},\tilde{x}_{kh},\tilde{y}_{kh})\}_{h=1}^{r_k},
 $$
 
 to retain variation across local subpartitions.
@@ -89,13 +83,7 @@ The **Mean Representative (MR)** preserves local feature and response means. It 
 The **Transformed Mean Representative (TMR)** modifies mean-based construction for nonlinear generalized linear models:
 
 $$
-\tilde{x}_k=\bar{x}_k,
-\quad
-\tilde{y}_k=
-G\{
-\frac{1}{n_k}
-\sum_{i\in I_k}g(y_i)
-\right\},
+\tilde{x}_k=\bar{x}_k,\quad\tilde{y}_k=G\{\frac{1}{n_k}\sum_{i\in I_k}g(y_i)\},
 $$
 
 where $g$ is the link function and $G=g^{-1}$.
@@ -107,20 +95,13 @@ TMR reduces bias induced by nonlinear links while retaining a simple one-shot co
 Let
 
 $$
-\eta_i=x_i^\top\beta,
-\quad
-r_i=y_i-G(\eta_i).
+\eta_i=x_i^\top\beta,\quad r_i=y_i-G(\eta_i).
 $$
 
 The **Score-Matching Representative (SMR)** preserves the local score contribution:
 
 $$
-\sum_{i\in I_k}
-\nu(\eta_i)r_i x_i=
-n_k
-\nu(\tilde{\eta}_k)
-\tilde r_k
-\tilde{x}_k.
+\sum_{i\in I_k}\nu(\eta_i)r_i x_i=n_k\nu(\tilde{\eta}_k)\tilde r_k \tilde{x}_k.
 $$
 
 SMR is model-adaptive and preserves local gradient direction. The original score-matching system, however, can be underdetermined, so its representative may not be unique.
@@ -138,22 +119,13 @@ The **Anchored Score-Matching Representative** supplements score matching with a
 Its covariate component has the barycentric form
 
 $$
-\tilde{x}_k=
-\frac{
-\sum_{i\in I_k}
-h(\eta_i,y_i)x_i
-}{
-\sum_{i\in I_k}
-h(\eta_i,y_i)
-},
+\tilde{x}_k=\frac{\sum_{i\in I_k}h(\eta_i,y_i)x_i}{\sum_{i\in I_k}h(\eta_i,y_i)},
 $$
 
 where
 
 $$
-h(\eta_i,y_i)=
-\nu(\eta_i)
-\{y_i-G(\eta_i)\}.
+h(\eta_i,y_i)=\nu(\eta_i)\{y_i-G(\eta_i)\}.
 $$
 
 Anchored-SMR preserves model-adaptive score information while improving identifiability, geometric representativeness, and convergence stability.
@@ -161,12 +133,7 @@ Anchored-SMR preserves model-adaptive score information while improving identifi
 Because Anchored-SMR encodes directional information at the current model, it is used with a one-step update rather than full minimization:
 
 $$
-\tilde{\beta}^{(t+1)}=\tilde{\beta}^{(t)}-
-\gamma
-S(
-\tilde{\beta}^{(t)};
-\tilde{\mathcal D}^{(t)}
-\right).
+\tilde{\beta}^{(t+1)}=\tilde{\beta}^{(t)}-\gamma S(\tilde{\beta}^{(t)};\tilde{\mathcal D}^{(t)}).
 $$
 
 <p align="center">
@@ -180,9 +147,7 @@ $$
 Across several constructions, the representative location takes the form
 
 $$
-\tilde{x}=
-\frac{\sum_i w_i x_i}
-     {\sum_i w_i}.
+\tilde{x}=\frac{\sum_i w_i x_i}{\sum_i w_i}.
 $$
 
 The weights encode the information to be preserved. This motivates the **barycentric representativeness principle**:
@@ -202,8 +167,7 @@ $$
 When $Q_k$ belongs to a Gaussian family, the representative has the form
 
 $$
-\tilde{\mathcal D}_k=
-(n_k,\tilde{x}_k,\tilde{\Sigma}_k,\tilde{y}_k),
+\tilde{\mathcal D}_k=(n_k,\tilde{x}_k,\tilde{\Sigma}_k,\tilde{y}_k),
 $$
 
 which we call a **clouded representative**.
@@ -227,11 +191,7 @@ $$
 For a loss $L(\theta;x,y)$, the lifted loss is
 
 $$
-L(\theta;Q_i)=
-\mathbb E_{(X,Y)\sim Q_i}
-[
-L(\theta;X,Y)
-\right].
+L(\theta;Q_i)=\mathbb E_{(X,Y)\sim Q_i}L(\theta;X,Y).
 $$
 
 The resulting **Lifted Empirical Risk Minimization** framework evaluates the original loss over local probability clouds. Point-valued learning is recovered when the clouds degenerate to point masses.
@@ -249,25 +209,16 @@ $$
 Let
 
 $$
-r_i=
-y_i-x_i^\top\beta-\beta_0,
-\quad
-s_\beta=s\|\beta\|,
-\quad
-a_i=\frac{r_i}{s_\beta},
-\quad
+r_i=y_i-x_i^\top\beta-\beta_0,\quad
+s_\beta=s\|\beta\|,\quad
+a_i=\frac{r_i}{s_\beta},\quad
 w_i=\tau-\Phi(-a_i).
 $$
 
 The Gaussian-lifted quantile risk has the closed form
 
 $$
-R_{Q_n}(\theta)=
-\frac{1}{n}
-\sum_{i=1}^{n}
-[
-r_iw_i+s_\beta\phi(a_i)
-\right].
+R_{Q_n}(\theta)=\frac{1}{n}\sum_{i=1}^{n}[r_iw_i+s_\beta\phi(a_i)].
 $$
 
 For a nondegenerate cloud, the lifted objective is smooth. As $s\rightarrow0$, it recovers classical quantile regression.
@@ -279,14 +230,7 @@ The **Clouded Score-Matching Representative (Clouded-SMR)** matches the gradient
 Its location is
 
 $$
-\tilde{x}_k=
-\frac{
-\sum_{i\in I_k}
-w_i^\circ x_i
-}{
-\sum_{i\in I_k}
-w_i^\circ
-}.
+\tilde{x}_k=\frac{\sum_{i\in I_k}w_i^\circ x_i}{\sum_{i\in I_k}w_i^\circ}.
 $$
 
 The location and response are uniquely determined by score matching, while the covariance is selected to preserve local second-order structure subject to the score-matching constraints.
@@ -304,30 +248,19 @@ $$
 The lifted hinge loss is
 
 $$
-\tilde{\ell}_i(w,b)=
-\mathbb E
-[
-\max\{0,1-y_i(w^\top X_i+b)\}
-\right].
+\tilde{\ell}_i(w,b)=\mathbb E[\max\{0,1-y_i(w^\top X_i+b)\}].
 $$
 
 Let
 
 $$
-\nu_i=y_i(w^\top x_i+b),
-\quad
-s^2=w^\top\Sigma w,
-\quad
-a_i=\frac{1-\nu_i}{s}.
+\nu_i=y_i(w^\top x_i+b),\quad s^2=w^\top\Sigma w,\quad a_i=\frac{1-\nu_i}{s}.
 $$
 
 Then
 
 $$
-\tilde{\ell}_i(w,b)=
-(1-\nu_i)\Phi(a_i)
-+
-s\phi(a_i).
+\tilde{\ell}_i(w,b)=(1-\nu_i)\Phi(a_i)+s\phi(a_i).
 $$
 
 The lifted loss is smooth for nondegenerate covariance, remains convex, and converges to the ordinary hinge loss as $\Sigma\rightarrow0$.
@@ -341,9 +274,7 @@ The lifted loss is smooth for nondegenerate covariance, remains convex, and conv
 Representatives are constructed separately for each class:
 
 $$
-\tilde{\mathcal D}_{k,c}=
-(n_{k,c},c,\tilde{x}_{k,c},
-\tilde{\Sigma}_{k,c}).
+\tilde{\mathcal D}_{k,c}=(n_{k,c},c,\tilde{x}_{k,c},\tilde{\Sigma}_{k,c}).
 $$
 
 - **Clouded MR** preserves class-wise location and covariance without depending on the current SVM parameters.
