@@ -330,38 +330,62 @@ The Gaussian lifting produces a smooth convex objective for nondegenerate clouds
 
 # Beyond Tabular Data
 
-Point and clouded representatives extend what information can be retained from a local dataset. A second direction is to extend **what form a representative can take**.
+Point and clouded representatives extend what information can be retained from tabular data. A second direction is to extend **what form a representative can take**.
 
-The representative principle is not restricted to finite-dimensional tabular observations. For more complex data, the communicated object should retain the structure of the original data while preserving selected information needed for downstream learning.
+For structured data, the communicated object should retain the structure of the original observations while preserving selected information needed for downstream learning.
 
 This leads to a broader question:
 
 > **What should a representative preserve, and what form should it take?**
 
-### Functional Representatives
+### Functional Representatives: Rep-FoS
 
-For functional data, the representative itself can be a function or a collection of functional summaries. The goal is to preserve information from locally observed curves without reducing communication to model parameters.
+For sparse and irregular functional responses, we develop **Rep-FoS**, a Representative Learning framework for distributed function-on-scalar regression.
 
-This extends the representative principle from finite-dimensional observations to infinite-dimensional data objects.
+Consider
 
-### Image Representatives
+$$
+Y_i(t)=\alpha(t)+X_i^\top\beta(t)+\varepsilon_i(t).
+$$
+ 
+Rather than communicating subject-level functional observations, each node constructs kernel-weighted representatives that preserve the local score information required for estimating the coefficient functions.
+ 
+Rep-FoS uses a mean representative for initialization and then iteratively updates score-matching representatives as the functional coefficient estimate evolves. Thus, the representative principle extends from a weighted pseudo-point to a collection of time-indexed representative quantities.
+ 
+### Image Representatives: PBR
 
-For image classification, direct pixel averaging can destroy important image structure, while communicating latent features makes the shared information dependent on a particular representation model.
-
-We therefore construct representatives that remain in the **image domain** while preserving selected structural and predictive information from local images.
-
-This allows nodes with different models or internal representations to communicate through a common data-format object.
-
+For distributed image classification, direct pixel averaging may lose image structure, while communicating latent features makes the shared information dependent on a particular model representation.
+ 
+We therefore develop **Projection-Based Representatives (PBR)**. For an image $x_i$, a local Tucker decomposition gives
+ 
+$$
+x_i\approx\mathcal G_i\times_1 U_{k,c,1}\times_2 U_{k,c,2}.
+$$
+ 
+Within a local image cluster, PBR constructs a representative Tucker core
+ 
+$$
+\widetilde{\mathcal G}_q(w)=\sum_{i=1}^{n_q}w_i\mathcal G_i
+$$
+ 
+and reconstructs the representative as an image in the original data domain.
+ 
+The weights are adapted through predictive matching, while Tucker-space anchoring keeps the representative connected to the local image geometry.
+ 
+Thus, model information influences **which representative is constructed**, but does not become the communication format itself.
+ 
 ### Toward General Structured Representatives
-
-The same principle suggests representatives for other structured data: a representative should retain a data-compatible form while preserving statistical, geometric, predictive, or decision-relevant information required for its downstream use.
-
+ 
+These developments suggest a general principle:
+ 
+> **A representative should preserve task-relevant information while remaining in a form that can be interpreted and reused independently of the sender's internal model.**
+ 
 The development of Representative Learning therefore shifts from
-
+ 
 > **How should we construct the best pseudo-point?**
-
+ 
 to
-
+ 
 > **What information should a representative preserve, and what mathematical object should carry that information?**
 
 ---
