@@ -20,7 +20,7 @@ title: Publications
 - Casey, J., Wang, B., **Li, K.†**  
   *Representative Learning for Distributed Support Vector Machines*  
   arXiv  
-  https://arxiv.org/abs/
+  https://arxiv.org/abs/2611.00641
 
 - Chen, Q., Han, K., **Li, K.†**  
   *Distributed Function-on-Scalar Regression via Representative Learning*  
