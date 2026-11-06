@@ -579,10 +579,10 @@ The role of a representative therefore expands together with its mathematical fo
 
 - K. Li. **Representative Learning for Distributed Learning with Heterogeneity and Asynchrony.** *Journal of Computational and Graphical Statistics*, 2026.
   
-- K. Li, B. Wang. **Clouded Representatives and Score Matching for Distributed Quantile Regression.** *arXiv*, 2026.
+- K. Li, B. Wang. **Clouded Representatives and Score Matching for Distributed Quantile Regression.** *arXiv*, https://arxiv.org/abs/2611.07273, 2026.
   
-- J. Casey, B. Wang, K. Li. **Representative Learning for Distributed Support Vector Machines.** *arXiv*, 2026.
-
+- J. Casey, B. Wang, K. Li. **Representative Learning for Distributed Support Vector Machines.** *arXiv*, https://arxiv.org/abs/2611.00641, 2026.
+  
 ### Collaborative Learning
 
 - J. Casey, Q. Chen, M. Fan, B. Geng, R. Shterenberg, Z. Chen, and K. Li. **Distributed Collaborative Learning with Representative Knowledge Sharing.** *Mathematics*, 2025.
