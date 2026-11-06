@@ -15,7 +15,7 @@ title: Publications
 - **Li, K.**,  Wang, B.  
   *Lifted Empirical Risk for Quantile Regression: Clouded Representatives and Score Matching*  
   arXiv  
-  https://arxiv.org/abs/
+  https://arxiv.org/abs/2611.0727
 
 - Casey, J., Wang, B., **Li, K.†**  
   *Representative Learning for Distributed Support Vector Machines*  
